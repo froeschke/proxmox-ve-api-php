@@ -1,0 +1,15 @@
+{
+    "name": "vinevax/proxmox-ve-php-api",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "VineVax\\PVE\\": "src/"
+        }
+    }
+}
