@@ -5,7 +5,7 @@ namespace VineVax\PVE;
 class Node
 {
     public function __construct(
-        public string $node
+        public ?string $node
     ) { }
 
     public function status(): array
@@ -18,5 +18,12 @@ class Node
     public function qemu(int $vmid = null)
     {
         return new Qemu($this->node, $vmid);
+    }
+
+    public function get()
+    {
+        return Proxmox::json(
+            Proxmox::get("nodes")
+        );
     }
 }
