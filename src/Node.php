@@ -22,7 +22,7 @@ class Node
         return new Qemu($this->node, $vmid);
     }
 
-    public function storage(string $storage)
+    public function storage(string $storage = null)
     {
         return new Storage($this->node, $storage);
     }
