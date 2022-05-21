@@ -101,7 +101,7 @@ class Proxmox
         return new Cluster();
     }
 
-    public function nodes(?string $node): Node
+    public function nodes(string $node = null): Node
     {
         return new Node($node);
     }
