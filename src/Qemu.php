@@ -18,6 +18,20 @@ class Qemu
         public ?int $vmid = null,
     ) { }
 
+    public function get(array $options = [])
+    {
+        return Proxmox::json(
+            Proxmox::get("nodes/{$this->node}/qemu", $options)
+        );
+    }
+
+    public function post(array $options = [])
+    {
+        return Proxmox::json(
+            Proxmox::post("nodes/{$this->node}/qemu", $options)
+        );
+    }
+
     public function agent(): Agent
     {
         return new Agent($this->node, $this->vmid);
