@@ -116,8 +116,12 @@ class Qemu
 
     public function rrddata(array $options = [])
     {
+        $timeframe = $options['timeframe'] ?? 'day';
+        $cf = $options['cf'] ?? 'MAX';
+        unset($options['timeframe'], $options['cf']);
+
         return Proxmox::json(
-            Proxmox::get("nodes/{$this->node}/qemu/{$this->vmid}/rrddata", $options)
+            Proxmox::get("nodes/{$this->node}/qemu/{$this->vmid}/rrddata?timeframe={$timeframe}&cf={$cf}", $options)
         );
     }
 
