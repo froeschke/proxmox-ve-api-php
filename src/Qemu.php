@@ -32,10 +32,12 @@ class Qemu
         );
     }
 
-    public function delete(array $options = [])
+    public function delete(array $options = [], array $queryParameters = [])
     {
+        $query = http_build_query($queryParameters);
+
         return Proxmox::json(
-            Proxmox::delete("nodes/{$this->node}/qemu/{$this->vmid}", $options)
+            Proxmox::delete("nodes/{$this->node}/qemu/{$this->vmid}?{$query}", $options)
         );
     }
 
