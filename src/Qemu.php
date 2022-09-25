@@ -35,7 +35,7 @@ class Qemu
     public function delete(array $options = [])
     {
         return Proxmox::json(
-            Proxmox::delete("nodes/{$this->node}/qemu", $options)
+            Proxmox::delete("nodes/{$this->node}/qemu/{$this->vmid}", $options)
         );
     }
 
