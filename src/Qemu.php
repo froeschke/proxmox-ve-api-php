@@ -32,6 +32,13 @@ class Qemu
         );
     }
 
+    public function delete(array $options = [])
+    {
+        return Proxmox::json(
+            Proxmox::delete("nodes/{$this->node}/qemu", $options)
+        );
+    }
+
     public function agent(): Agent
     {
         return new Agent($this->node, $this->vmid);
