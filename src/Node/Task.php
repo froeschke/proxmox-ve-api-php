@@ -27,4 +27,13 @@ class Task
             Proxmox::delete("nodes/{$this->node}/tasks/{$upid}")
         );
     }
+
+    public function status(string $upid)
+    {
+        $upid = urlencode($upid);
+
+        return Proxmox::json(
+            Proxmox::get("nodes/{$this->node}/tasks/{$upid}/status")
+        );
+    }
 }
