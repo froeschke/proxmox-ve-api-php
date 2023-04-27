@@ -3,6 +3,7 @@
 namespace VineVax\PVE;
 
 use VineVax\PVE\Node\Storage\Storage;
+use VineVax\PVE\Node\Task;
 
 class Node
 {
@@ -17,14 +18,19 @@ class Node
         );
     }
 
-    public function qemu(int $vmid = null)
+    public function qemu(int $vmid = null): Qemu
     {
         return new Qemu($this->node, $vmid);
     }
 
-    public function storage(string $storage = null)
+    public function storage(string $storage = null): Storage
     {
         return new Storage($this->node, $storage);
+    }
+
+    public function tasks(): Task
+    {
+        return new Task($this->node);
     }
 
     public function get()
